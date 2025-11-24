@@ -42,6 +42,19 @@ Create a `.env` file in the project root with the following API keys:
 ```bash
 # Required for all sandbox operations
 E2B_API_KEY=your_e2b_api_key_here
+
+# Authentication for Claude Code in sandboxes
+# Different apps use different authentication methods:
+# - run_claude_in_sandbox.py: Uses CLAUDE_CODE_OAUTH_TOKEN only
+# - 09_claude_code_agent.py: Uses ANTHROPIC_API_KEY only
+# - agents.py (obox workflows): Tries CLAUDE_CODE_OAUTH_TOKEN first, falls back to ANTHROPIC_API_KEY
+
+# Claude Code OAuth Token (preferred for most apps)
+# Get your token by running: claude setup-token
+# Or from: https://claude.ai/settings
+CLAUDE_CODE_OAUTH_TOKEN=your_claude_code_oauth_token_here
+
+# Anthropic API Key (alternative/fallback for some apps)
 ANTHROPIC_API_KEY=your_anthropic_api_key_here
 
 # Optional: Required for git push/PR functionality
@@ -53,7 +66,7 @@ GITHUB_TOKEN=your_github_token_here
 
 **Get your API keys:**
 - **E2B API Key**: [https://e2b.dev/docs](https://e2b.dev/docs) - Sign up and get your API key
-- **Anthropic API Key**: [https://console.anthropic.com/](https://console.anthropic.com/) - Create an API key in your account settings
+- **Claude Code OAuth Token**: [https://claude.ai/settings](https://claude.ai/settings) - or run: `claude setup-token`
 - **GitHub Token**: [https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) - Create a personal access token with `repo` scope
 
 ### 2. Application Usage

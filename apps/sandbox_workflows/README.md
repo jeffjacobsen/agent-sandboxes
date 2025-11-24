@@ -30,9 +30,12 @@ cp .env.sample .env
 ```
 
 Edit `.env` and add:
-- `ANTHROPIC_API_KEY` - Your Anthropic API key for Claude
 - `E2B_API_KEY` - Your E2B API key for sandbox management
+- `CLAUDE_CODE_OAUTH_TOKEN` - Your Claude Code OAuth token (preferred, get via `claude setup-token`)
+- `ANTHROPIC_API_KEY` - Your Anthropic API key (fallback if OAuth token not available)
 - `GITHUB_TOKEN` (Optional) - GitHub Personal Access Token for git push/PR operations
+
+**Authentication Note**: The obox workflow (`agents.py`) uses a fallback strategy: it first tries `CLAUDE_CODE_OAUTH_TOKEN`, then falls back to `ANTHROPIC_API_KEY` if the OAuth token isn't available. This allows flexibility in authentication methods.
 
 ## Usage
 
